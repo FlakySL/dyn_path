@@ -44,6 +44,9 @@ This project doesn't have any specific configuration
 to it, meaning you can simply use `cargo build` to compile
 the project and `cargo test` to test it.
 
+The makefile in the project is used only in the workflow
+runs and provides coverage for `codecov` and other statistics.
+
 ## Code of Conduct
 
 The Flaky community follows the [Contributor covenant].

@@ -48,5 +48,13 @@ this example anyways.
 Add the following to your `Cargo.toml` under the `dependencies` section
 
 ```toml
-dyn_access = "1.0.0"
+dyn_path = "1.0.0"
 ```
+
+## License 📜
+
+This repository is dual licensed, TLDR. If your repository is open source, the library
+is free of use, otherwise contact [licensing@flaky.es](mailto:licensing@flaky.es) for a custom license for your
+use case.
+
+For more information read the [license](./LICENSE) file.
