@@ -1,3 +1,4 @@
+![dyn_path](https://github.com/user-attachments/assets/8c6b4cd3-7686-487e-b2d8-0dd63477185b)
 
 [![Crates.io](https://badges.ws/crates/v/dyn_path)](https://crates.io/crates/dyn_path)
 [![License](https://badges.ws/crates/l/dyn_path)](./LICENSE)
