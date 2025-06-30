@@ -38,8 +38,6 @@ let song_main_artist = dyn_access!(response.album.artists[0].name);
 assert_eq!(song_name, "Car Radio");
 assert_eq!(song_main_artist, "Twenty One Pilots");
 ```
-```
-```
 
 Obviously this isn't a real call to a real API, but the intention can be inferred from
 this example anyways.
