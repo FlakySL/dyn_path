@@ -1,7 +1,7 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
-extern crate alloc;
+pub extern crate alloc;
 
 #[cfg(test)]
 mod test;
@@ -99,6 +99,7 @@ macro_rules! dyn_access {
 macro_rules! dyn_path {
     ($head:ident $($rest:tt)*) => {{
         use ::core::fmt::Write;
+        use $crate::alloc::string::ToString;
         let mut __ = ::core::stringify!($head).to_string();
         $crate::dyn_path!(@recurse __, $($rest)*)
     }};

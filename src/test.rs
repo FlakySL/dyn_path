@@ -47,8 +47,8 @@ pub fn nested_access() {
 
 #[test]
 pub fn direct_expression() {
-    let vector = vec![map()];
-    let _1 = dyn_access!((vector[0]).very.nested[1])
+    let vector = (map(), ());
+    let _1 = dyn_access!((vector.0).very.nested[1])
         .expect(ERROR);
 
     assert_eq!(_1, "of");
