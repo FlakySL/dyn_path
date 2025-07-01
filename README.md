@@ -56,6 +56,19 @@ Add the following to your `Cargo.toml` under the `dependencies` section
 dyn_path = "1.0.0"
 ```
 
+## No std 💡
+
+This crate supports `no_std`, meaning you can use it in your project without
+depending on specific system I/O or anything else.
+
+The crate has a default feature enabled which is `std`, with this feature
+the crate doesn't really use `std` but it pre-includes `alloc` which
+permits the use of the `dyn_path` macro, which uses `String` to describe
+a path.
+
+You can also disable the default features and the crate will annotate `no_std`.
+Then use the `alloc` feature if you want to have the `dyn_path` macro enabled.
+
 ## License 📜
 
 This repository is dual licensed, TLDR. If your repository is open source, the library
