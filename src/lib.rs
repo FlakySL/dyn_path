@@ -40,7 +40,7 @@
 //!
 //! let map: HashMap<String, HashMap<String, HashMap<i32, ()>>> = HashMap::new();
 //!
-//! dyn_access!(map.nested.value[0]); // since we don't have any real value this will return None.
+//! dyn_access!(map.nested.value[&0]); // since we don't have any real value this will return None.
 //! ```
 //! Check the available macro documentation to learn more about how to use
 //! the specific macros.

@@ -58,6 +58,7 @@ pub fn direct_expression() {
 #[test]
 pub fn path_descriptor() {
     let _1 = dyn_path!(very.nested["value"].on.index[1 + 1]);
+    let _2 = dyn_path!(very.nested["value"].on.index[1 + 1]);
 
     assert_eq!(_1, r#"very.nested["value"].on.index[2]"#)
 }
