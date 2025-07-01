@@ -1,3 +1,50 @@
+//! # dyn_path
+//!
+//! dyn_path is a set of macros that permit you access objects
+//! that have `.get()` methods that return `Option<T>` in a nested
+//! way.
+//!
+//! It is as specific as it looks, but most libraries that parse
+//! data interchange languages have a "Value" that contains other
+//! "Value"s inside. And casually all the "Value"s have a `.get()`
+//! method, a generic `.get()` method in fact.
+//!
+//! How does this work? Just like JavaScript.
+//! ```rust
+//! use serde_json::json;
+//! use dyn_path::dyn_access;
+//!
+//! let object = json!({
+//!     "very": {
+//!         "nested": {
+//!             "value": [
+//!                 "hello",
+//!                 "world"
+//!             ]
+//!         }
+//!     }
+//! });
+//!
+//! let hello = dyn_access!(object.very.nested.value[0]).unwrap();
+//! let world = dyn_access!(object.very.nested.value[1]).unwrap();
+//!
+//! assert_eq!(hello, "hello");
+//! assert_eq!(world, "world");
+//! ```
+//! This is also useful for nested `HashMap`s but the difference is
+//! that you will actually get a compile time error if you are wrong
+//! with the type.
+//! ```rust
+//! use std::collections::HashMap;
+//! use dyn_path::dyn_access;
+//!
+//! let map: HashMap<String, HashMap<String, HashMap<i32, ()>>> = HashMap::new();
+//!
+//! dyn_access!(map.nested.value[0]); // since we don't have any real value this will return None.
+//! ```
+//! Check the available macro documentation to learn more about how to use
+//! the specific macros.
+
 #![cfg_attr(not(feature = "std"), no_std)]
 
 #[cfg(all(not(feature = "std"), feature = "alloc"))]
