@@ -1,3 +1,8 @@
+#![cfg_attr(not(feature = "std"), no_std)]
+
+#[cfg(all(not(feature = "std"), feature = "alloc"))]
+extern crate alloc;
+
 #[cfg(test)]
 mod test;
 
@@ -59,7 +64,7 @@ macro_rules! dyn_access {
     }};
 
     (@recurse $acc:expr, . $field:ident $($rest:tt)*) => {{
-        let __ = $acc.and_then(|v| v.get(::std::stringify!($field)));
+        let __ = $acc.and_then(|v| v.get(::core::stringify!($field)));
         $crate::dyn_access!(@recurse __, $($rest)*)
     }};
 
@@ -89,11 +94,12 @@ macro_rules! dyn_access {
 /// assert_eq!(display_path, r#"nested.path.at[2].with["no"]["head"]"#);
 /// ```
 /// Notice how the macro pre-computes the indexes and generates the target string.
+#[cfg(feature = "alloc")]
 #[macro_export]
 macro_rules! dyn_path {
     ($head:ident $($rest:tt)*) => {{
-        use ::std::fmt::Write;
-        let mut __ = ::std::stringify!($head).to_string();
+        use ::core::fmt::Write;
+        let mut __ = ::core::stringify!($head).to_string();
         $crate::dyn_path!(@recurse __, $($rest)*)
     }};
 

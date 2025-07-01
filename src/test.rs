@@ -1,6 +1,8 @@
 use serde_json::{json, Value};
 
-use crate::{dyn_access, dyn_path};
+use crate::dyn_access;
+#[cfg(feature = "alloc")]
+use crate::dyn_path;
 
 const ERROR: &str = "nested value to exist.";
 
@@ -52,6 +54,7 @@ pub fn direct_expression() {
     assert_eq!(_1, "of");
 }
 
+#[cfg(feature = "alloc")]
 #[test]
 pub fn path_descriptor() {
     let _1 = dyn_path!(very.nested["value"].on.index[1 + 1]);
