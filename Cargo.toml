@@ -1,7 +1,19 @@
 [package]
 name = "dyn_path"
+description = "A JavaScript-like nested object-like structure non-fallible path access interface. Access your data without serializing it just like you do in your JavaScript projects."
+repository = "https://github.com/FlakySL/dyn_path"
+license = "GPL-3.0"
+readme = "./README.md"
 version = "1.0.0"
 edition = "2024"
+authors = ["Esteve Autet <esteve@memw.es>", "Chiko <chiko@envs.net>"]
+keywords = [
+    "JavaScript",
+    "dynamism",
+    "serializing",
+    "serialization",
+    "json",
+]
 
 
 [dev-dependencies]

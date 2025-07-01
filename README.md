@@ -14,6 +14,12 @@ This library permits the user to access values in nested structures trough the u
 of `get` methods that return `Option<T>`. This may be used to access specific API data
 without serializing it into multiple structures and making a mess.
 
+## Table of Contents 📖
+
+- [Use Cases](#use-cases-)
+- [Installation](#installation-)
+- [Licensing](#license-)
+
 ## Use Cases 🔍
 
 Imagine you just accessed a song API, this API describes everything you may or may not
