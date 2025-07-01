@@ -54,7 +54,7 @@ this example anyways.
 Add the following to your `Cargo.toml` under the `dependencies` section
 
 ```toml
-dyn_path = "1.0.0"
+dyn_path = "1.0.7"
 ```
 
 ## No std 💡
