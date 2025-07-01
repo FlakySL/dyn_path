@@ -146,8 +146,7 @@ macro_rules! dyn_access {
 macro_rules! dyn_path {
     ($head:ident $($rest:tt)*) => {{
         use ::core::fmt::Write;
-        #[cfg(feature = "alloc")]
-        use $crate::alloc::string::ToString;
+        $crate::__import_alloc!()
         let mut __ = ::core::stringify!($head).to_string();
         $crate::dyn_path!(@recurse __, $($rest)*)
     }};
@@ -164,3 +163,13 @@ macro_rules! dyn_path {
 
     (@recurse $acc:expr,) => {{ $acc }};
 }
+
+#[doc(hidden)]
+#[macro_export]
+#[cfg(feature = "alloc")]
+macro_rules! __import_alloc { () => { use $crate::alloc::string::ToString; }; }
+
+#[doc(hidden)]
+#[macro_export]
+#[cfg(not(feature = "alloc"))]
+macro_rules! __import_alloc { () => {}; }
