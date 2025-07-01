@@ -52,5 +52,5 @@ jobs:
           file: coverage.lcov
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
-          slug: FlakySL/dyn_access
+          slug: FlakySL/dyn_path
           verbose: true
