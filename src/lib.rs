@@ -94,7 +94,7 @@ macro_rules! dyn_access {
 /// assert_eq!(display_path, r#"nested.path.at[2].with["no"]["head"]"#);
 /// ```
 /// Notice how the macro pre-computes the indexes and generates the target string.
-#[cfg(feature = "alloc")]
+#[cfg(any(feature = "alloc", feature = "std"))]
 #[macro_export]
 macro_rules! dyn_path {
     ($head:ident $($rest:tt)*) => {{
@@ -104,12 +104,12 @@ macro_rules! dyn_path {
     }};
 
     (@recurse $acc:expr, . $field:ident $($rest:tt)*) => {{
-        let _ = ::std::write!($acc, ".{}", ::std::stringify!($field));
+        let _ = ::core::write!($acc, ".{}", ::core::stringify!($field));
         $crate::dyn_path!(@recurse $acc, $($rest)*)
     }};
 
     (@recurse $acc:expr, [$idx:expr] $($rest:tt)*) => {{
-        let _ = ::std::write!($acc, "[{:?}]", ($idx));
+        let _ = ::core::write!($acc, "[{:?}]", ($idx));
         $crate::dyn_path!(@recurse $acc, $($rest)*)
     }};
 
