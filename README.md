@@ -18,6 +18,7 @@ without serializing it into multiple structures and making a mess.
 
 - [Use Cases](#use-cases-)
 - [Installation](#installation-)
+- [No STD](#no-std-)
 - [Licensing](#license-)
 
 ## Use Cases 🔍
