@@ -16,7 +16,7 @@ keywords = [
 ]
 
 [dev-dependencies]
-serde_json = "1.0.142"
+serde_json = "1.0.143"
 
 [features]
 default = ["std"]
